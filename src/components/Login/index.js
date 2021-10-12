@@ -9,6 +9,13 @@ const Login = () => {
         name="username"
         type="text"
       />
+
+      <label htmlFor="roomCode">Room Code</label>
+      <input
+        id="roomCode"
+        name="roomCode"
+        type="text"
+      />
     </form>
   );
 };

@@ -11,4 +11,9 @@ describe('Login components', () => {
     render(<Login />);
     expect(screen.getByLabelText('Username')).toBeInTheDocument();
   });
-})
+
+  it('renders a Room Code input field', () => {
+    render(<Login />);
+    expect(screen.getByLabelText('Room Code')).toBeInTheDocument();
+  });
+});

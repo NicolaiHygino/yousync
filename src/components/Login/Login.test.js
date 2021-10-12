@@ -6,4 +6,9 @@ describe('Login components', () => {
     render(<Login />);
     expect(screen.getByRole('form')).toBeInTheDocument();
   });
+
+  it('renders a username input field', () => {
+    render(<Login />);
+    expect(screen.getByLabelText('Username')).toBeInTheDocument();
+  });
 })

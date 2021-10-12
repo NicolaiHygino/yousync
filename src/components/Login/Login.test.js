@@ -16,4 +16,9 @@ describe('Login components', () => {
     render(<Login />);
     expect(screen.getByLabelText('Room Code')).toBeInTheDocument();
   });
+
+  it('renders a submit button', () => {
+    render(<Login />);
+    expect(screen.getByText('Enter')).toBeInTheDocument();
+  });
 });

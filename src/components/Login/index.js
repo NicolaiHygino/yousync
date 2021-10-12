@@ -16,6 +16,8 @@ const Login = () => {
         name="roomCode"
         type="text"
       />
+
+      <button type="submit">Enter</button>
     </form>
   );
 };

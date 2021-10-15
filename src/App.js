@@ -1,21 +1,22 @@
-import React, { useState, useEffect } from 'react'
-import Login from './components/Login'
-import { io } from 'socket.io-client'
+import React, { useState, useEffect } from 'react';
+import Login from 'components/Login';
+import Dashboard from 'components/Dashboard';
+import { io } from 'socket.io-client';
 
 const App = () => {
   const [socket, setSocket] = useState(null);
-  const [username, setUsername] = useState('')
-  const [room, setRoom] = useState('')
+  const [username, setUsername] = useState('');
+  const [room, setRoom] = useState('');
 
   const handleLogin = (username, room) => {
-    setUsername(username)
-    setRoom(room)
-  }
+    setUsername(username);
+    setRoom(room);
+  };
 
   useEffect(() => {
-    const newSocket = io('http://localhost:3001/')
-    setSocket(newSocket)
-  }, [setSocket])
+    const newSocket = io('http://localhost:3001/');
+    setSocket(newSocket);
+  }, [setSocket]);
 
   if (!username && !room) {
     return (
@@ -23,14 +24,9 @@ const App = () => {
         socket={socket} 
         handleLogin={handleLogin}
       />
-    )
+    );
   } 
-  return (
-    <div>
-      <h1>{username}</h1>
-      <h2>{room}</h2>
-    </div>
-  );
-}
+  return <Dashboard username={username} room={room} />;
+};
 
-export default App
+export default App;

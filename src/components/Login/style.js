@@ -1,14 +1,12 @@
 import { Form, Field, ErrorMessage } from 'formik'
 import styled from 'styled-components';
+import { Content } from 'globalStyles';
 
-export const Content = styled.section`
+export const LoginContent = styled(Content)`
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  width: 100vw;
-  height: 100vh;
-  padding: 10px;
 `;
 
 export const StyledForm = styled(Form)`

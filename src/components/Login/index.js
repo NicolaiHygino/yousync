@@ -1,9 +1,9 @@
 import React from 'react'
-import { Formik, Form } from 'formik'
+import { Formik } from 'formik'
 import * as Yup from 'yup'
-import logo from '../../assets/images/yousync-group-logo.png';
+import logo from 'assets/images/yousync-group-logo.png';
 import {
-  Content,
+  LoginContent,
   StyledForm,
   StyledField,
   FieldWrapper,
@@ -19,7 +19,7 @@ const Login = ({ socket, handleLogin }) => {
   }
 
   return (
-    <Content>
+    <LoginContent>
       <Image src={logo} />
       <Formik
         initialValues={{ username: '', room: '' }}
@@ -46,8 +46,8 @@ const Login = ({ socket, handleLogin }) => {
         <Button type="submit">Enter</Button>
       </StyledForm>
       </Formik>
-    </Content>
-  )
-}
+    </LoginContent>
+  );
+};
 
 export default Login

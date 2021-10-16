@@ -1,7 +1,8 @@
 import React from 'react';
+import Player from 'components/Player';
 import logo from 'assets/images/yousync-logo-mobile.png';
+import { Content } from 'globalStyles';
 import {
-  DashContent,
   Header,
   Logo,
 } from './style';
@@ -12,10 +13,11 @@ const Dashboard = ({ username, room }) => {
       <Header>
         <Logo src={logo} />
       </Header>
-      <DashContent>
+      <Player />
+      <Content>
         <h1>{username}</h1>
-        <h2></h2>
-      </DashContent>
+        <h2>{room}</h2>
+      </Content>
     </>
   );
 };

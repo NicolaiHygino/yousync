@@ -1,9 +1,4 @@
 import styled from 'styled-components';
-import { Content } from 'globalStyles';
-
-export const DashContent = styled(Content)`
-  padding-top: 50px;
-`;
 
 export const Header = styled.header`
   display: flex;

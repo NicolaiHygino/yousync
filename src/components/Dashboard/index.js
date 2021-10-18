@@ -7,13 +7,13 @@ import {
   Logo,
 } from './style';
 
-const Dashboard = ({ username, room }) => {
+const Dashboard = ({ username, room, socket }) => {
   return (
     <>
       <Header>
         <Logo src={logo} />
       </Header>
-      <Player />
+      <Player socket={socket}/>
       <Content>
         <h1>{username}</h1>
         <h2>{room}</h2>

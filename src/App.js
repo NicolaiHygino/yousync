@@ -2,11 +2,11 @@ import React, { useState, useEffect } from 'react';
 import Login from 'components/Login';
 import Dashboard from 'components/Dashboard';
 import { io } from 'socket.io-client';
+import { useAuth } from 'hooks/useAuth';
 
 const App = () => {
   const [socket, setSocket] = useState(null);
-  const [username, setUsername] = useState('');
-  const [room, setRoom] = useState('');
+  const [username, room, setUsername, setRoom] = useAuth();
 
   const handleLogin = (username, room) => {
     setUsername(username);

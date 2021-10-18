@@ -6,8 +6,8 @@ import { useAuth } from 'hooks/useAuth';
 
 const App = () => {
   const [socket, setSocket] = useState(null);
-  const [username, room, setUsername, setRoom] = useAuth();
-
+  const [username, room, setUsername, setRoom] = useAuth()
+  
   const handleLogin = (username, room) => {
     setUsername(username);
     setRoom(room);
@@ -17,6 +17,12 @@ const App = () => {
     const newSocket = io('http://localhost:3001/');
     setSocket(newSocket);
   }, [setSocket]);
+  
+  useEffect(() => {
+    if(username && room && socket) {
+      socket.emit('login', { username, room });
+    }  
+  }, [username, room, socket]);
 
   if (!username && !room) {
     return (
@@ -25,8 +31,15 @@ const App = () => {
         handleLogin={handleLogin}
       />
     );
-  } 
-  return <Dashboard username={username} room={room} />;
+  }
+  if(!socket) return <h1>Loading</h1>;
+  return (
+    <Dashboard
+      username={username}
+      room={room}
+      socket={socket}
+    />
+  );
 };
 
 export default App;

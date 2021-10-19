@@ -23,7 +23,7 @@ const Player = ({ socket }) => {
     })
   }, [socket]); 
 
-  const handlePlayerEvent = (action) => {
+  const emitPlayerEvent = (action) => {
     if (emitter === 'server') {
       setEmitter('client');
       return;
@@ -38,8 +38,8 @@ const Player = ({ socket }) => {
         ref={playerRef}
         videoId="UJBknAsxfrA"
         opts={{height: 'auto', width: '100%'}}
-        onPlay={() => handlePlayerEvent('play')}
-        onPause={() => handlePlayerEvent('pause')}
+        onPlay={() => emitPlayerEvent('play')}
+        onPause={() => emitPlayerEvent('pause')}
       />
     </PlayerWrapper>
     

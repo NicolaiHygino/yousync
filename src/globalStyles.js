@@ -43,7 +43,6 @@ export const GlobalStyle = createGlobalStyle`
 `;
 
 export const Content = styled.section`
-  width: 100vw;
-  height: 100vh;
+  height: 100%;
   padding: 10px;
 `;

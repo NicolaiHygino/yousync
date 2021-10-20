@@ -4,6 +4,10 @@ import Dashboard from 'components/Dashboard';
 import { io } from 'socket.io-client';
 import { useAuth } from 'hooks/useAuth';
 
+const SERVER_URL = process.env.NODE_ENV === 'development'
+  ? 'http://localhost:3001/'
+  : process.env.REACT_APP_SERVER_URL;
+
 const App = () => {
   const [socket, setSocket] = useState(null);
   const [username, room, setUsername, setRoom] = useAuth()
@@ -14,7 +18,7 @@ const App = () => {
   };
 
   useEffect(() => {
-    const newSocket = io('http://localhost:3001/');
+    const newSocket = io(SERVER_URL);
     setSocket(newSocket);
   }, [setSocket]);
   

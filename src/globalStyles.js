@@ -38,7 +38,6 @@ export const GlobalStyle = createGlobalStyle`
     image-rendering: pixelated;                 /* Chrome as of 2019   */
     image-rendering: optimize-contrast;         /* CSS3 Proposed       */
     -ms-interpolation-mode: nearest-neighbor;   /* IE8+                */
-
   }
 `;
 

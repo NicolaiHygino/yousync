@@ -4,7 +4,27 @@ import styled from 'styled-components';
 
 const PlayerWrapper = styled.div`
   margin-top: 50px;
+  position: relative;
+  width: 100%; 
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+
+  & iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+`;
+
+const ControlsWrapper = styled.div`
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, .5);
 `;
 
 const emitStateChange = (e, socket) => {  
@@ -18,14 +38,14 @@ const emitStateChange = (e, socket) => {
 
 let handleStateChange = emitStateChange;
 
-const Player = ({ socket }) => {
+const Player = ({ socket, videoId }) => {
   const playerRef = useRef(null);
 
   useEffect(() => {
     const player = playerRef.current.internalPlayer;
     socket.on('stateChange', ({position, isPlaying}) => {
       handleStateChange = () => {};
-      
+
       isPlaying === 1 ? player.playVideo() : player.pauseVideo();
       player.seekTo(position);
 
@@ -39,10 +59,21 @@ const Player = ({ socket }) => {
     <PlayerWrapper>
       <YouTube
         ref={playerRef}
-        videoId="UJBknAsxfrA"
-        opts={{height: 'auto', width: '100%'}}
+        videoId={videoId}
+        containerClassName="youtubeContainer"
+        opts={{
+          playerVars: {
+            controls: 0,
+            disablekb: 0,
+            fs: 0,
+            rel: 0,
+          }
+        }}
         onStateChange={e => handleStateChange(e, socket)}
       />
+      {/* <ControlsWrapper>
+
+      </ControlsWrapper> */}
     </PlayerWrapper>
   );
 };
